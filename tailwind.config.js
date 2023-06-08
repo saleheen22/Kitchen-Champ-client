@@ -11,5 +11,10 @@ export default {
   daisyui: {
     themes: ["light", "dark", "cupcake"],
   },
+  variants: {
+    extend: {
+        display: ["group-hover"],
+    },
+},
 }
 

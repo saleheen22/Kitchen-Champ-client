@@ -1,6 +1,9 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './PopularClass.css';
+// const img1 = "../../../../public/logo/checking.jpg"
+// const img1 = "https://balbetta.sirv.com/pics/abidu-mannan.jpg";
+const img1 = "https://i.ibb.co/KXvKbzM/sheldor.png";
 const PopularClass = () => {
 
    
@@ -60,8 +63,8 @@ const PopularClass = () => {
   slidesToSlide={1}
   swipeable
 >
-<div className="card w-96 glass">
-  <figure><img src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
+<div className="card w-96 glass h-full">
+  <figure><img className='h-64 w-full' src={img1} alt="car!"/></figure>
   <div className="card-body">
     <h2 className="card-title">Life hack</h2>
     <p>How to park your car at your garage?</p>
@@ -70,8 +73,8 @@ const PopularClass = () => {
     </div>
   </div>
 </div>
-<div className="card w-96 glass">
-  <figure><img src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
+<div className="card w-96 glass h-full">
+  <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
   <div className="card-body">
     <h2 className="card-title">Life hack</h2>
     <p>How to park your car at your garage?</p>
@@ -80,8 +83,8 @@ const PopularClass = () => {
     </div>
   </div>
 </div>
-<div className="card w-96 glass">
-  <figure><img src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
+<div className="card w-96 glass h-full">
+  <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
   <div className="card-body">
     <h2 className="card-title">Life hack</h2>
     <p>How to park your car at your garage?</p>
@@ -90,8 +93,8 @@ const PopularClass = () => {
     </div>
   </div>
 </div>
-<div className="card w-96 glass">
-  <figure><img src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
+<div className="card w-96 glass h-full">
+  <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
   <div className="card-body">
     <h2 className="card-title">Life hack</h2>
     <p>How to park your car at your garage?</p>
@@ -100,8 +103,8 @@ const PopularClass = () => {
     </div>
   </div>
 </div>
-<div className="card w-96 glass">
-  <figure><img src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
+<div className="card w-96 glass h-full">
+  <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!"/></figure>
   <div className="card-body">
     <h2 className="card-title">Life hack</h2>
     <p>How to park your car at your garage?</p>
