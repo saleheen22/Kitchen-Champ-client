@@ -7,3 +7,12 @@
     height: 420px;
     /* #0F457B */
 }
+
+@media only screen and (max-width: 576px) {
+   .slider{
+    height: fit-content;
+   }
+   .gif{
+    height: 220px;
+   }
+  }
