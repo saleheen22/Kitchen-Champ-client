@@ -7,6 +7,10 @@
     height: 420px;
     /* #0F457B */
 }
+.slick-prev:before,
+.slick-next:before {
+  color: #0F457B  !important;
+}
 
 @media only screen and (max-width: 576px) {
    .slider{
