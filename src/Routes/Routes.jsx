@@ -4,6 +4,8 @@ import {
 import Main from "../Skeleton/Main";
 import Home from "../pages/Home/Home";
 import AdminDashboard from "../Skeleton/AdminDashboard";
+import ManageClass from "../pages/AdminDashboard/ManageClass";
+import ManageUsers from "../pages/AdminDashboard/ManageUsers";
 
 
  export const router = createBrowserRouter([
@@ -19,7 +21,17 @@ import AdminDashboard from "../Skeleton/AdminDashboard";
     ]
     },
     {
-      path: "/admin/home",
-      element: <AdminDashboard></AdminDashboard>
+      path: "admin",
+      element: <AdminDashboard></AdminDashboard>,
+      children: [
+        {
+          path: "class",
+          element: <ManageClass></ManageClass>
+        },
+        {
+          path: "users",
+          element: <ManageUsers></ManageUsers>
+        }
+      ]
     }
   ]);

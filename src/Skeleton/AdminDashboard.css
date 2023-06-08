@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.main-container{
+    display: flex;
+}
 a{
     text-decoration: none !important;
 }
@@ -36,4 +40,8 @@ a{
     border-right: 4px solid white;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     background: rgb(45, 51,89);
+}
+.link_text{
+    white-space: nowrap;
+    font-size: 15px;
 }

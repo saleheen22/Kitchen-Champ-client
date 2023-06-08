@@ -1,17 +1,18 @@
-import {motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import './AdminDashboard.css';
 import {FaBars, FaHome} from 'react-icons/fa'
-import {  NavLink } from 'react-router-dom';
+import {  NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import Footer from '../pages/Shared/Footer/Footer';
 const AdminDashboard = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => {
         setIsOpen(!isOpen);
     }
     return (
-        <div className='text-white'>
+        <div >
             <div className="main-container mx-0 ">
-                <motion.div animate = {{width: isOpen? "200px" : "45px"}} className='sidebar'>
+                <motion.div animate = {{width: isOpen? "200px" : "45px"}} className='sidebar  text-white'>
                     <div className="top_section  pt-5">
                         {isOpen && <h1 className='logo1 '>
                             Kitchen Champ  </h1>}
@@ -21,22 +22,29 @@ const AdminDashboard = () => {
                        
                     </div>
                     <section className='routes'>
-                        <NavLink to="/" className="link mt-12">
+                        <NavLink to="/admin/users" className="link mt-12">
                             <div className="icon">
                                 <FaHome></FaHome>
                                 </div>
-                                {isOpen && <div className='link_text'>Manage Users</div>}
+                                {isOpen && <AnimatePresence>
+                                        <motion.div className='link_text'>Manage Users</motion.div>
+                                    </AnimatePresence>}
                             
                         </NavLink>
-                        <NavLink to="/" className="link">
+                        <NavLink to="/admin/class" className="link">
                         <FaHome></FaHome>
-                                {isOpen && <div className='link_text'>Manage Classes</div>}
+                        {isOpen && <AnimatePresence>
+                                        <motion.div className='link_text'>Manage Class</motion.div>
+                                    </AnimatePresence>}
                         </NavLink>
                         <NavLink to="/"></NavLink>
                     </section>
                 </motion.div>
-                <h2>hello</h2>
+                <div >
+                    <Outlet></Outlet>
+                </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div>
             <footer className="footer p-10 bg-neutral text-neutral-content">
                 <div>
                     {/* There will be a pic */}
