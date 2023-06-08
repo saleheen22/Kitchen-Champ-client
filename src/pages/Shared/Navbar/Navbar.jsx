@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+import logo1 from '../../../../public/logo/black-tansparentBg.png';
+import logo2 from '../../../../public/logo/white-transparentBg.png';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     const [theme, setTheme] = useState(localStorage.getItem('theme')? localStorage.getItem('theme') : "light");
     useEffect(()=>{
@@ -37,16 +40,22 @@ const Navbar = () => {
                             <li><a>Item 3</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-warning text-xl">daisyUI</a>
+                   { theme === 'light' ? <>
+                   <Link to="/">
+                   <img className='logo-img mt-5' src={logo1} alt="" />
+                   </Link>
+                   </>: <>
+                   <Link to="/"><img className='logo-img mt-5' src={logo2} alt="" /></Link>
+                   </>}
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
+                        <li className='font-bold'><a>Item 1</a></li>
                         <li tabIndex={0}>
                             <details>
                                 <summary>Parent</summary>
                                 <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
+                                    <li className='font-semibold'><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
                                 </ul>
                             </details>

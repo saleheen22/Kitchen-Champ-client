@@ -16,11 +16,11 @@ const Slider = () => {
       };
 
     return (
-        <div className='mb-10 mt-20  text-white'>
+        <div className='mb-10 mt-40  text-white'>
             <Slider1 {...settings}>
       <div className='slider '>
       <div className='grid md:grid-cols-2'>
-      <div className='md:w-3/4 pt-14 md:pt-24 md:mx-auto text-justify font-semibold mx-14 '>
+      <div className='md:w-3/4 pt-14 md:pt-24 md:mx-auto text-justify  mx-14 '>
        <p>Attention students! Do not let your summer break slip away. Turn it into a productive culinary exploration with Kitchen Champ. Hone your cooking skills, expand culinary knowledge, and unleash creativity in the kitchen. Gain confidence as you whip up mouthwatering dishes, impressing family and friends. Whether a beginner or budding chef, Kitchen Champ offers a summer of culinary growth, inspiration, and delicious achievements. Transform your break into a memorable culinary adventure!</p>
        <button className='btn btn-warning mt-5 mb-5'> button </button>
       </div>
@@ -37,7 +37,7 @@ const Slider = () => {
       </div>
       <div className='slider '>
       <div className='grid md:grid-cols-2'>
-      <div className='md:w-3/4 pt-14 md:pt-24 md:mx-auto text-justify font-semibold mx-14 h-1/2'>
+      <div className='md:w-3/4 pt-14 md:pt-24 md:mx-auto text-justify  mx-14 h-1/2'>
        <p>Embark on a culinary adventure guided by acclaimed chefs from five-star hotels. Our renowned instructors, including Michelin-starred chefs and culinary competition winners, bring their expertise and passion to your kitchen. Learn their specialty dishes, gain insights, and refine your skills to become a true Kitchen Champ. Immerse yourself in their culinary wisdom, unlocking your potential and igniting your creativity. Join us on this remarkable journey of cooking, learning, and inspiration. Get ready to elevate your culinary prowess with our esteemed chefs as your mentors!</p>
        <button className='btn btn-warning mt-4 mb-4'> button </button>
       </div>

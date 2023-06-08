@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Slider from './Slider/Slider';
 import PopularClass from './PopularClass/PopularClass';
 import PopularInstructor from './PopularInstructor/PopularInstructor';
+import Reviews from './Reviews/Reviews';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Slider></Slider>
             <PopularClass></PopularClass>
             <PopularInstructor></PopularInstructor>
+            <Reviews></Reviews>
             </div>
         </div>
     );
