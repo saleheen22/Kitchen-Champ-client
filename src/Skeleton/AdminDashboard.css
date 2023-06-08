@@ -19,7 +19,10 @@ a{
     line-height: 1;
 }
 .top_section{
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
 }
 .link{
   display: flex;

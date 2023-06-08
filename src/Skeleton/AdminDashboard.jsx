@@ -2,16 +2,21 @@ import {motion} from 'framer-motion';
 import './AdminDashboard.css';
 import {FaBars, FaHome} from 'react-icons/fa'
 import {  NavLink } from 'react-router-dom';
+import { useState } from 'react';
 const AdminDashboard = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    }
     return (
         <div className='text-white'>
             <div className="main-container mx-0 ">
-                <motion.div animate = {{width: "200px"}} className='sidebar'>
-                    <div className="top_section flex align-items-center justify-evenly pt-5">
-                        <h1 className='logo1 '>
-                            Kitchen Champ  </h1>
+                <motion.div animate = {{width: isOpen? "200px" : "45px"}} className='sidebar'>
+                    <div className="top_section  pt-5">
+                        {isOpen && <h1 className='logo1 '>
+                            Kitchen Champ  </h1>}
                             <div className="bars ">
-                                <FaBars></FaBars>
+                                <FaBars onClick={toggle}></FaBars>
                             </div>
                        
                     </div>
@@ -20,12 +25,12 @@ const AdminDashboard = () => {
                             <div className="icon">
                                 <FaHome></FaHome>
                                 </div>
-                                <div className='link_text'>Manage Users</div>
+                                {isOpen && <div className='link_text'>Manage Users</div>}
                             
                         </NavLink>
                         <NavLink to="/" className="link">
                         <FaHome></FaHome>
-                                <div className='link_text'>Manage Classes</div>
+                                {isOpen && <div className='link_text'>Manage Classes</div>}
                         </NavLink>
                         <NavLink to="/"></NavLink>
                     </section>
