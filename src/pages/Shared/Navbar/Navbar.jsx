@@ -2,7 +2,7 @@ import './Navbar.css';
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar fixed top-0 z-10 bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -20,7 +20,7 @@ const Navbar = () => {
                             <li><a>Item 3</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-info text-xl">daisyUI</a>
+                    <a className="btn btn-warning text-xl">daisyUI</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -37,7 +37,7 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end md:pe-24">
                     <a className="btn">Button</a>
                 </div>
             </div>
