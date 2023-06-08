@@ -16,7 +16,7 @@ const Slider = () => {
       };
 
     return (
-        <div className='mb-10 mt-40  text-white'>
+        <div className='mb-10 mt-28  text-white'>
             <Slider1 {...settings}>
       <div className='slider '>
       <div className='grid md:grid-cols-2'>

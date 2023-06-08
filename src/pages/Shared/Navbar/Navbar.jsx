@@ -21,7 +21,7 @@ const Navbar = () => {
         }
     }
     return (
-        <div>
+        <div className='max-w-screen-xl mx-auto'>
             <div className="navbar fixed top-0 z-10 bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -50,7 +50,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li className='font-bold'><a>Item 1</a></li>
+                        <li className='font-bold'><Link to="/admin/home">Admin</Link></li>
+                        
                         <li tabIndex={0}>
                             <details>
                                 <summary>Parent</summary>
