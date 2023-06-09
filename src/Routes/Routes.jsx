@@ -6,6 +6,9 @@ import Home from "../pages/Home/Home";
 import Dashboard from "../Skeleton/Dashboard";
 import ManageClass from "../pages/AdminDashboard/ManageClass";
 import ManageUsers from "../pages/AdminDashboard/ManageUsers";
+import Instructors from "../pages/Instructors/Instructors";
+import Classes from "../pages/Classes/Classes";
+import Login from "../pages/Login/Login";
 
 
  export const router = createBrowserRouter([
@@ -17,6 +20,19 @@ import ManageUsers from "../pages/AdminDashboard/ManageUsers";
         {
             path: "/",
             element: <Home></Home>
+        },
+        {
+          path: "instructors",
+          element: <Instructors></Instructors>
+        },
+        {
+          path: 'classes',
+          element: <Classes></Classes>
+        },
+        {
+          path: 'login',
+          element: <Login></Login>
+
         }
     ]
     },

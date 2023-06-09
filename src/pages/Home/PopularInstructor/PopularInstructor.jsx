@@ -36,79 +36,90 @@ const PopularInstructor = () => {
     // const divStyle = (src) => ({
     //     backgroundImage: 'url('+ src + ')'
     // })
-   
+
 
     return (
-        <div className='mb-48'>
+        <div className='mb-48 mx-auto'>
             <p className='text-center text-3xl my-12
         '>Meet Our Popular Instructors</p>
+            {/* Open the modal using ID.showModal() method */}
+            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                <form method="dialog" className="modal-box">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non eveniet deleniti dignissimos ea perferendis, quas officia atque libero earum in incidunt et voluptate, aliquid ducimus ipsum ab dolores? Possimus itaque libero adipisci. Possimus ea vero, consectetur, commodi beatae temporibus dolor atque dignissimos amet, aliquid reprehenderit repudiandae perferendis eveniet repellat ullam!</p>
+                    <div className="modal-action">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn">Close</button>
+                    </div>
+                </form>
+            </dialog>
             <div className="wrapper">
 
                 <div className="scene">
                     <div className="carousel keen-slider" ref={sliderRef}>
 
 
-                    <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
-                            
+                        <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
+
                             <figure><img className='images' src={img1} alt="Shoes" /></figure>
                             <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
                                 <p className='text-justify mt-1 p-0'>Rassie van der Dussen dfdfdfj </p>
-                               
-                               <button className='btn btn-xs btn-outline btn-warning  mt-2'>Profile</button>
-                            
+
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+
                             </div>
-                       
-                          
-                        
+
+
+
 
                         </div>
-                     
+
                         <div className="carousel__cell number-slide3">3</div>
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
-                            
+
                             <figure><img className='images' src={img2} alt="Shoes" /></figure>
                             <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
                                 <p className='text-justify mt-1 p-0'>Rassie van der Dussen dfdfdfj </p>
-                               
-                               <button className='btn btn-xs btn-outline btn-warning  mt-2'>Profile</button>
-                            
+
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+
                             </div>
-                       
-                          
-                        
+
+
+
 
                         </div>
-                       
+
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
-                            
+
                             <figure><img className='images' src={img3} alt="Shoes" /></figure>
                             <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
                                 <p className='text-justify mt-1 p-0'>Rassie van der Dussen dfdfdfj </p>
-                               
-                               <button className='btn btn-xs btn-outline btn-warning  mt-2'>Profile</button>
-                            
+
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+
                             </div>
-                       
-                          
-                        
+
+
+
 
                         </div>
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
-                            
+
                             <figure><img className='images' src={img4} alt="Shoes" /></figure>
                             <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
                                 <p className='text-justify mt-1 p-0'>Rassie van der Dussen dfdfdfj </p>
-                               
-                               <button className='btn btn-xs btn-outline btn-warning  mt-2'>Profile</button>
-                            
+
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+
                             </div>
-                       
-                          
-                        
+
+
+
 
                         </div>
 
-                       
+
                     </div>
                 </div>
             </div>
