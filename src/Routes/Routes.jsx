@@ -3,7 +3,7 @@ import {
   } from "react-router-dom";
 import Main from "../Skeleton/Main";
 import Home from "../pages/Home/Home";
-import AdminDashboard from "../Skeleton/AdminDashboard";
+import Dashboard from "../Skeleton/Dashboard";
 import ManageClass from "../pages/AdminDashboard/ManageClass";
 import ManageUsers from "../pages/AdminDashboard/ManageUsers";
 
@@ -22,7 +22,7 @@ import ManageUsers from "../pages/AdminDashboard/ManageUsers";
     },
     {
       path: "admin",
-      element: <AdminDashboard></AdminDashboard>,
+      element: <Dashboard></Dashboard>,
       children: [
         {
           path: "class",

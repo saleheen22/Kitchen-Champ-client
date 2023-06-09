@@ -1,11 +1,12 @@
 import {AnimatePresence, motion} from 'framer-motion';
-import './AdminDashboard.css';
+import './Dashboard.css';
 import {FaBars, FaHome} from 'react-icons/fa'
-import {  NavLink, Outlet } from 'react-router-dom';
+import {  Link, NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from '../pages/Shared/Footer/Footer';
-const AdminDashboard = () => {
-    const [isOpen, setIsOpen] = useState(false);
+
+const Dashboard = () => {
+    const [isOpen, setIsOpen] = useState(true);
     const toggle = () => {
         setIsOpen(!isOpen);
     }
@@ -15,26 +16,26 @@ const AdminDashboard = () => {
                 <motion.div animate = {{width: isOpen? "200px" : "45px"}} className='sidebar  text-white'>
                     <div className="top_section  pt-5">
                         {isOpen && <h1 className='logo1 '>
-                            Kitchen Champ  </h1>}
+                            <Link to="/">Kitchen Champ</Link>  </h1>}
                             <div className="bars ">
                                 <FaBars onClick={toggle}></FaBars>
                             </div>
                        
                     </div>
-                    <section className='routes'>
-                        <NavLink to="/admin/users" className="link mt-12">
+                    <section className='routes animate__animated animate__bounceInLeft'>
+                        <NavLink to="/admin/users" className="link mt-12 ">
                             <div className="icon">
                                 <FaHome></FaHome>
                                 </div>
                                 {isOpen && <AnimatePresence>
-                                        <motion.div className='link_text'>Manage Users</motion.div>
+                                        <motion.div className='link_text '>Manage Users</motion.div>
                                     </AnimatePresence>}
                             
                         </NavLink>
                         <NavLink to="/admin/class" className="link">
                         <FaHome></FaHome>
                         {isOpen && <AnimatePresence>
-                                        <motion.div className='link_text'>Manage Class</motion.div>
+                                        <motion.div className='link_text '>Manage Class</motion.div>
                                     </AnimatePresence>}
                         </NavLink>
                         <NavLink to="/"></NavLink>
@@ -49,4 +50,4 @@ const AdminDashboard = () => {
     );
 };
 
-export default AdminDashboard;
+export default Dashboard;
