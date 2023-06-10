@@ -1,7 +1,12 @@
+import { Helmet } from "react-helmet";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     return (
         <div className="mt-28">
+            <Helmet>
+                <title>Kitchen Champ || Login</title>
+            </Helmet>
             <div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row-reverse">
@@ -29,6 +34,7 @@ const Login = () => {
                                 <div className="form-control mt-6">
                                     <button className="btn btn-warning">Login</button>
                                 </div>
+                                <SocialLogin></SocialLogin>
                             </div>
                         </div>
                     </div>
