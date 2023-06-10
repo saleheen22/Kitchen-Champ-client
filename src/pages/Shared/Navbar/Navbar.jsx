@@ -3,20 +3,27 @@ import logo1 from '../../../../public/logo/black-tansparentBg.png';
 import logo2 from '../../../../public/logo/white-transparentBg.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 const Navbar = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('theme')? localStorage.getItem('theme') : "light");
-    useEffect(()=>{
+    const { user, logOut } = useAuth();
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : "light");
+    useEffect(() => {
         localStorage.setItem('theme', theme);
         const localTheme = localStorage.getItem('theme');
         document.querySelector("html").setAttribute("data-theme", localTheme);
 
     }
-    , [theme])
-    const handleTheme = (event) =>{
-        if(event.target.checked){
+        , [theme])
+    const handleTheme = (event) => {
+        if (event.target.checked) {
             setTheme('dark')
         }
-        else{
+        else {
             setTheme('light');
         }
     }
@@ -29,49 +36,53 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+                            <li className='font-bold'><Link to="/admin">Admin</Link></li>
+
+
+                            <li><Link to='/instructors' >Instructors</Link></li>
+                            <li><Link to="/classes">Classes</Link></li>
+                            <li><Link></Link></li>
+                            <li><Link></Link></li>
                         </ul>
                     </div>
-                   { theme === 'light' ? <>
-                   <Link to="/">
-                   <img className='logo-img mt-5' src={logo1} alt="" />
-                   </Link>
-                   </>: <>
-                   <Link to="/"><img className='logo-img mt-5' src={logo2} alt="" /></Link>
-                   </>}
+                    {theme === 'light' ? <>
+                        <Link to="/">
+                            <img className='logo-img mt-5' src={logo1} alt="" />
+                        </Link>
+                    </> : <>
+                        <Link to="/"><img className='logo-img mt-5' src={logo2} alt="" /></Link>
+                    </>}
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-bold'><Link to="/admin">Admin</Link></li>
-                        
-          
+
+
                         <li><Link to='/instructors' >Instructors</Link></li>
                         <li><Link to="/classes">Classes</Link></li>
                         <li><Link></Link></li>
                         <li><Link></Link></li>
-                        
+
                     </ul>
                 </div>
                 <div className="navbar-end md:pe-24">
-                    <Link to="/login"><button className='btn btn-warning'>Login</button></Link>
+                    {user ? <>
+                        <Link ><button onClick={handleLogOut} className='btn btn-warning'>Log Out</button></Link>
+                    </> :
+                        <>
+                            <Link to="/login"><button className='btn btn-warning'>Login</button></Link>
+                        </>
+                    }
 
 
-                    
+
                     <div>
                         <label className="swap swap-rotate">
 
                             {/* this hidden checkbox controls the state */}
-                            <input type="checkbox" onChange={handleTheme} 
-                            
-                            checked = {theme === 'light' ? false: true}
+                            <input type="checkbox" onChange={handleTheme}
+
+                                checked={theme === 'light' ? false : true}
                             />
 
                             {/* sun icon */}
