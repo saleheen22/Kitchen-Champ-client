@@ -14,7 +14,7 @@ const Dashboard = () => {
         <div >
             <div className="main-container mx-0 ">
                 <motion.div animate = {{width: isOpen? "200px" : "45px"}} className='sidebar  text-white'>
-                    <div className="top_section  pt-5">
+                    <div className="top_section  pt-5 ">
                         {isOpen && <h1 className='logo1 '>
                             <Link to="/">Kitchen Champ</Link>  </h1>}
                             <div className="bars ">
@@ -22,8 +22,8 @@ const Dashboard = () => {
                             </div>
                        
                     </div>
-                    <section className='routes animate__animated animate__bounceInLeft'>
-                        <NavLink to="allusers" className="link mt-12 ">
+                    <section className='routes animate__animated animate__bounceInLeft mt-16'>
+                        <NavLink to="allusers" className="link mt-24 ">
                             <div className="icon">
                                 <FaUsers></FaUsers>
                                 </div>
@@ -54,7 +54,7 @@ const Dashboard = () => {
                 <div>
                
                 </div>
-                <div className='mt-20' >
+                <div className='mt-12' >
                 <p className='mx-auto ms-96 ps-40 text-3xl'>Dashboard </p>
                     <Outlet></Outlet>
                 </div>

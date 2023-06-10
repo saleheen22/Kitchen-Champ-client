@@ -11,7 +11,7 @@ import Classes from "../pages/Classes/Classes";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
-import AdminHome from "../pages/AdminDashboard/AdminHome";
+import AdminRoute from "./AdminRoute";
 
 
  export const router = createBrowserRouter([
@@ -50,7 +50,7 @@ import AdminHome from "../pages/AdminDashboard/AdminHome";
         // /admin routes
         {
           path: "allusers",
-          element: <ManageUsers></ManageUsers>
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path: "allclass",

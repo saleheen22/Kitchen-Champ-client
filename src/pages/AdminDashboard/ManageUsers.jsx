@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -8,20 +9,62 @@ const ManageUsers = () => {
             const res = await axiosSecure.get('/users')
             return res.data;
         })
+        console.log(users);
+
+
+        const handleMakeAdmin = user =>{
+            fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                method: 'PATCH'
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.modifiedCount){
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        }   
+        
+        const handleMakeInstructor = user =>{
+            fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+                method: 'PATCH'
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.modifiedCount){
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        } 
+   
     return (
-        <div className=" my-16 mx-auto animate__animated animate__bounceIn ">
+        <div className=" my-16 mx-auto  ">
             <h2 className="text-5xl ms-80 ps-40">All The users</h2>
 
             <div className="mx-auto ms-64 mt-10">
-              <div className="overflow-x-auto ">
-                    <table className="table">
+              <div className="overflow-x-auto animate__animated animate__fadeInDown">
+                    <table className="table table-zebra">
                         {/* head */}
                         <thead>
                             <tr className="text-2xl">
                                 <th  >
                                  #
                                 </th>
-                                <th  >Pic</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Current Role</th>
@@ -37,28 +80,19 @@ const ManageUsers = () => {
                                 {index + 1}
                                 </th>
                                 <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={user?.photoURL} alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                            
-                                    </div>
-                                </td>
-                                <td>
                                 <div className="font-bold">{user.name}</div>
                                 </td>
                                 <td>{user.email}</td>
-                                <td>
+                                <td className="text-center">
                                 {user?.role}
                                 </td>
                                 <td>
                                 <div className="grid grid-cols-2 gap-3 ">
-                                    <button className="btn btn-outline btn-success w-28">Make Instructor</button>
-                                    <button className="btn btn-outline w-28  btn-warning">Make Admin</button>
+                                    <button className="btn btn-outline btn-success w-28" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
+                                    <button className="btn btn-outline w-28  btn-warning" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
                                     </div>
                                 </td>
+                               
                              
                             </tr>
 

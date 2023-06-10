@@ -1,7 +1,7 @@
 import {AnimatePresence, motion} from 'framer-motion';
 
 import {FaBars, FaChalkboardTeacher, FaHome, FaUsers} from 'react-icons/fa'
-import {  Link, NavLink, Outlet } from 'react-router-dom';
+import {  Link, NavLink} from 'react-router-dom';
 import { useState } from 'react';
 import Footer from '../Shared/Footer/Footer';
 
