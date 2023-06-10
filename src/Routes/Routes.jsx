@@ -42,7 +42,7 @@ import Registration from "../pages/Registration/Registration";
     ]
     },
     {
-      path: "admin",
+      path: "dashboard",
       element: <Dashboard></Dashboard>,
       children: [
         {

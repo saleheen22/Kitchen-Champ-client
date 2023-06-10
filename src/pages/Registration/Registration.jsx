@@ -5,6 +5,7 @@ import SocialLogin from "../Login/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useRef } from "react";
 import Swal from "sweetalert2";
+import { HashLoader } from "react-spinners";
 
 const Registration = () => {
     const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
@@ -55,8 +56,13 @@ const Registration = () => {
 
     return (
         <div className="mt-28">
-
-
+            <Helmet>
+                <title>Kitchen Champ || Register</title>
+            </Helmet>
+            {!loading ? <>
+            <HashLoader className="text-center text-5xl mx-auto my-12" color="rgba(214, 189, 54, 0.86)"></HashLoader>
+            </> :
+            <>
             <div>
                 <div>
                     <h2 className='text-center text-3xl'>Register Champ!! </h2>
@@ -92,7 +98,7 @@ const Registration = () => {
                                     pattern: /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/
                                 })}
                                     name="password"
-                                    placeholder="password" className="input input-bordered" />
+                                    placeholder="password" className="input input-bordered border-4" />
 
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
@@ -112,7 +118,7 @@ const Registration = () => {
                                     }
                                 )} name="confirmPassword"
                                     placeholder="password"
-                                    className="input input-bordered" />
+                                    className="input input-bordered border-4" />
                                 {errors.confirmPassword?.type === 'required' && <p className="text-red-600">Confirm Password is required</p>}
                                 <p className="text-red-600">{errors.confirmPassword?.message}</p>
                             </div>
@@ -121,7 +127,7 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text"   {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                                <input type="text"   {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered border-4" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
                             {/* Gender */}
@@ -129,21 +135,21 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Gender</span>
                                 </label>
-                                <input type="text" {...register("gender", { required: false })} name="gender" placeholder="Male/Female/Trans" className="input input-bordered" />
+                                <input type="text" {...register("gender", { required: false })} name="gender" placeholder="Male/Female/Trans" className="input input-bordered border-4" />
                             </div>
                             {/* Phone number */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Phone</span>
                                 </label>
-                                <input type="text" {...register("phone", { required: false })} name="phone" placeholder="phone" className="input input-bordered" />
+                                <input type="text" {...register("phone", { required: false })} name="phone" placeholder="phone" className="input input-bordered border-4" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Address</span>
                                 </label>
                                 <input type="text" {...register("address", { required: false })}
-                                    name="address" placeholder="address" className="input input-bordered" />
+                                    name="address" placeholder="address" className="input input-bordered border-4" />
                             </div>
                         </div>
                         <div className="form-control mt-6 mb-10 w-3/5  mx-auto">
@@ -159,6 +165,8 @@ const Registration = () => {
 
                 </div>
             </div>
+            </>
+            }
         </div>
     );
 };

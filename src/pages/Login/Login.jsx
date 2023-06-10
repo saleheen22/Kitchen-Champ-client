@@ -1,8 +1,10 @@
 import { Helmet } from "react-helmet";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
-import logo1 from '../../../public/logo/white-transparentBg.png'
-import logo2 from '../../../public/logo/black-tansparentBg.png'
+import { HashLoader } from "react-spinners";
+
+// import logo1 from '../../../public/logo/white-transparentBg.png'
+// import logo2 from '../../../public/logo/black-tansparentBg.png'
 import './Login.css';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -22,7 +24,7 @@ const Login = () => {
     const [error, setError] = useState("f");
     const [passtext, setPasstext] = useState('text');
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
-    const { signIn } = useAuth();
+    const { signIn, loading } = useAuth();
     const changeEye1 = () => {
         setPasstext('password');
     }
@@ -71,7 +73,13 @@ const Login = () => {
             <Helmet>
                 <title>Kitchen Champ || Login</title>
             </Helmet>
-            <div>
+
+           {
+            !loading? <>
+            <HashLoader className="text-center text-5xl mx-auto my-12" color="rgba(214, 189, 54, 0.86)"></HashLoader>
+            </> :
+            <>
+             <div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content grid md:grid-cols-2 md:gap-20">
                         <div className="text-center md:me-20">
@@ -125,13 +133,16 @@ const Login = () => {
                                             <Link to="/register" className="text-blue-600 underline decoration-orange-800">Register</Link>
                                         </small></p>
                                     </div>
-                                    <SocialLogin></SocialLogin>
+                                    
                                 </div>
                             </form>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>
             </div>
+            </>
+           }
         </div>
     );
 };
