@@ -12,7 +12,7 @@ a{
 }
 .sidebar{
     background: #0F457B ;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .main-container{
@@ -45,3 +45,4 @@ a{
     white-space: nowrap;
     font-size: 15px;
 }
+

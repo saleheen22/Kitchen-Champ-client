@@ -1,11 +1,11 @@
 import {AnimatePresence, motion} from 'framer-motion';
-import './Dashboard.css';
+
 import {FaBars, FaChalkboardTeacher, FaHome, FaUsers} from 'react-icons/fa'
 import {  Link, NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import Footer from '../pages/Shared/Footer/Footer';
+import Footer from '../Shared/Footer/Footer';
 
-const Dashboard = () => {
+const AdminHome = () => {
     const [isOpen, setIsOpen] = useState(true);
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -23,7 +23,7 @@ const Dashboard = () => {
                        
                     </div>
                     <section className='routes animate__animated animate__bounceInLeft'>
-                        <NavLink to="allusers" className="link mt-12 ">
+                        <NavLink to="/dashboard/allusers" className="link mt-12 ">
                             <div className="icon">
                                 <FaUsers></FaUsers>
                                 </div>
@@ -32,7 +32,7 @@ const Dashboard = () => {
                                     </AnimatePresence>}
                             
                         </NavLink>
-                        <NavLink to="allclass" className="link">
+                        <NavLink to="/dashboard/allclass" className="link">
                         <div className="">
                         <FaChalkboardTeacher></FaChalkboardTeacher>
                                 </div>
@@ -51,12 +51,10 @@ const Dashboard = () => {
                         </NavLink>
                     </section>
                 </motion.div>
-                <div>
-               
-                </div>
+              
                 <div className='mt-20' >
-                <p className='mx-auto ms-96 ps-40 text-3xl'>Dashboard </p>
-                    <Outlet></Outlet>
+                <p className='mx-auto ms-16 text-3xl'>This is Dashboard Home</p>
+                    
                 </div>
             </div>
             <Footer></Footer>
@@ -64,4 +62,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default AdminHome;

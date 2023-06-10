@@ -10,6 +10,8 @@ import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
+import PrivateRoute from "./PrivateRoute";
+import AdminHome from "../pages/AdminDashboard/AdminHome";
 
 
  export const router = createBrowserRouter([
@@ -43,16 +45,18 @@ import Registration from "../pages/Registration/Registration";
     },
     {
       path: "dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        // /admin routes
         {
-          path: "class",
-          element: <ManageClass></ManageClass>
+          path: "allusers",
+          element: <ManageUsers></ManageUsers>
         },
         {
-          path: "users",
-          element: <ManageUsers></ManageUsers>
-        }
+          path: "allclass",
+          element: <ManageClass></ManageClass>
+        },
+       
       ]
-    }
+    },
   ]);
