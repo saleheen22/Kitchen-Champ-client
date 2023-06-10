@@ -16,9 +16,12 @@ const Navbar = () => {
         localStorage.setItem('theme', theme);
         const localTheme = localStorage.getItem('theme');
         document.querySelector("html").setAttribute("data-theme", localTheme);
+        
 
     }
         , [theme])
+
+        // console.log(theme);
     const handleTheme = (event) => {
         if (event.target.checked) {
             setTheme('dark')
@@ -70,7 +73,7 @@ const Navbar = () => {
                         <Link ><button onClick={handleLogOut} className='btn btn-warning'>Log Out</button></Link>
                     </> :
                         <>
-                            <Link to="/login"><button className='btn btn-warning'>Login</button></Link>
+                            <Link to="/login" state={(theme)}><button className='btn btn-warning'>Login</button></Link>
                         </>
                     }
 
