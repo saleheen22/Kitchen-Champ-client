@@ -29,7 +29,9 @@ const ManageClass = () => {
         </>
     }
     const handleApprove = (cls) => {
-        fetch(`http://localhost:5000/class/approve/${cls._id}`, {
+
+        console.log(cls._id);
+        fetch(`http://localhost:5000/class/checking/${cls._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -48,25 +50,7 @@ const ManageClass = () => {
 
             })
     }
-    const handleDeny = (cls) => {
-        fetch(`http://localhost:5000/class/deny/${cls._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    refetch();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'The Class is Denied',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
 
-            })
-    }
 
     const handleId = (id) => {
         setClassId(id);
@@ -103,6 +87,25 @@ const ManageClass = () => {
                         position: 'top-end',
                         icon: 'success',
                         title: 'The Feedback is sent',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+
+            })
+    }
+    const handleDeny = (cls) => {
+        fetch(`http://localhost:5000/class/deny/${cls._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'The Class is Denied',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -181,7 +184,7 @@ const ManageClass = () => {
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={cls.image} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={cls?.image} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                         </div>
