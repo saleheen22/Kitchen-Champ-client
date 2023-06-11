@@ -12,6 +12,7 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 
 
@@ -55,7 +56,7 @@ import AdminRoute from "./AdminRoute";
         },
         {
           path: "allclass",
-          element: <ManageClass></ManageClass>
+          element: <InstructorRoute><ManageClass></ManageClass></InstructorRoute>
         },
        
       ]
