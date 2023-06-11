@@ -2,24 +2,27 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
+
 const ManageUsers = () => {
+   
+
     const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(
         ['users'], async () => {
             const res = await axiosSecure.get('/users')
             return res.data;
         })
-        console.log(users);
+    console.log(users);
 
 
-        const handleMakeAdmin = user =>{
-            fetch(`http://localhost:5000/users/admin/${user._id}`, {
-                method: 'PATCH'
-            })
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if(data.modifiedCount){
+                if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
                         position: 'top-end',
@@ -27,19 +30,44 @@ const ManageUsers = () => {
                         title: `${user.name} is an Admin Now!`,
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                 }
+
             })
-        }   
-        
-        const handleMakeInstructor = user =>{
-            fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-                method: 'PATCH'
-            })
+    }
+    // const handleMakeAdmin1 = user => {
+    //     fetch(`http://localhost:5000/users/adminClk/${user._id}`, {
+    //         method: 'PATCH'
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.modifiedCount) {
+    //                 refetch();
+    //                 Swal.fire({
+    //                     position: 'top-end',
+    //                     icon: 'success',
+    //                     title: `${user.name} is an Instructor Now!`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //             }
+
+    //         })
+    // }
+    const isAdminButtonDisabled = (user) => {
+        console.log('Insided button', user.isAdminClicked === true)
+        return user.isAdminClicked === true;
+      };
+
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if(data.modifiedCount){
+                if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
                         position: 'top-end',
@@ -47,23 +75,29 @@ const ManageUsers = () => {
                         title: `${user.name} is an Instructor Now!`,
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                 }
+
             })
-        } 
-   
+    }
+
+    const isInstButtonDisabled = (user) => {
+        console.log('Insided button', user.isAdminClicked === true)
+        return user.isInstClicked === true;
+      };
+
     return (
         <div className=" my-16 mx-auto  ">
             <h2 className="text-5xl ms-80 ps-40">All The users</h2>
 
             <div className="mx-auto ms-64 mt-10">
-              <div className="overflow-x-auto animate__animated animate__fadeInDown">
+                <div className="overflow-x-auto animate__animated animate__fadeInDown">
                     <table className="table table-zebra">
                         {/* head */}
                         <thead>
                             <tr className="text-2xl">
                                 <th  >
-                                 #
+                                    #
                                 </th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -74,34 +108,45 @@ const ManageUsers = () => {
                         <tbody>
                             {/* row 1 */}
                             {
-                                users.map((user, index) => 
-                                <tr key={user._id}>
-                                <th>
-                                {index + 1}
-                                </th>
-                                <td>
-                                <div className="font-bold">{user.name}</div>
-                                </td>
-                                <td>{user.email}</td>
-                                <td className="text-center">
-                                {user?.role}
-                                </td>
-                                <td>
-                                <div className="grid grid-cols-2 gap-3 ">
-                                    <button className="btn btn-outline btn-success w-28" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
-                                    <button className="btn btn-outline w-28  btn-warning" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
-                                    </div>
-                                </td>
-                               
-                             
-                            </tr>
+                                users.map((user, index) =>
+                                    <tr key={user._id}>
+                                        <th>
+                                            {index + 1}
+                                        </th>
+                                        <td>
+                                            <div className="font-bold">{user.name}</div>
+                                        </td>
+                                        <td>{user.email}</td>
+                                        <td className="text-center">
+                                            {user?.role}
+                                        </td>
+                                        <td>
+                                            <div className="grid grid-cols-2 gap-3 ">
+                                                <button className="btn  btn-outline btn-success w-28 " onClick={() => handleMakeInstructor(user)}
+                                                 disabled={isInstButtonDisabled(user)}
+                                                
+                                                >Make Instructor</button>
+                                                <button className="btn btn-outline w-28  btn-warning"
+                                                
+                                                onClick={() => handleMakeAdmin(user)}
+                                                
+                                                disabled={isAdminButtonDisabled(user)}
+                                                >Make Admin</button>
+                                            </div>
+                                        </td>
+                                        {/* <td>
+                                        <button className="btn btn-outline w-28  btn-warning" onClick={() => handleMakeAdmin1(user)}>Make rolee</button>
+                                        </td> */}
+
+
+                                    </tr>
 
                                 )
                             }
-                            
 
-  
-                       
+
+
+
                         </tbody>
 
 

@@ -1,6 +1,6 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import './Dashboard.css';
-import {FaBars, FaChalkboard, FaChalkboardTeacher, FaHome, FaLaptop, FaRegEdit, FaSchool, FaUsers} from 'react-icons/fa'
+import {FaBars, FaChalkboardTeacher, FaHome, FaLaptop, FaRegEdit, FaUsers} from 'react-icons/fa'
 
 import {  Link, NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
