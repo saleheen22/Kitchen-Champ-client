@@ -6,8 +6,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 const ManageClass = () => {
-    const [check, setCheck] = useState({})
-
+   
 
     const [classId, setClassId] = useState('');
     const [textareaValue, setTextareaValue] = useState('');
@@ -15,6 +14,8 @@ const ManageClass = () => {
     const handleTextareaChange = (event) => {
         setTextareaValue(event.target.value);
     };
+
+
 
     const [axiosSecure] = useAxiosSecure();
     const { data: allClass = [], refetch, isLoading } = useQuery(['class'], async () => {
@@ -75,7 +76,7 @@ const ManageClass = () => {
 
     const handleFeedback = () => {
         console.log();
-        
+
         const response = {
             feedback: textareaValue
         };
@@ -90,25 +91,32 @@ const ManageClass = () => {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json', // Set the content type to "text/plain"
-              },
+            },
             body: JSON.stringify(response)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if (data.modifiedCount) {
-                refetch();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'The Class is Denied',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'The Feedback is sent',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
 
-        })
+            })
     }
+
+    const isApproveButtonDisabled = (cls) => {
+        return cls.Status !== 'Pending'
+
+    }
+ 
+
     return (
 
         <div className="my-16 mx-auto">
@@ -189,9 +197,13 @@ const ManageClass = () => {
                                     {/* <td>{setCheck(cls?.Feedback)}</td> */}
                                     <td>
                                         <div className="grid grid-cols-3 gap-3 ">
-                                            <button className="btn btn-success " onClick={() => handleApprove(cls)}><FaCheck></FaCheck></button>
+                                            <button className="btn btn-success " onClick={() => handleApprove(cls)}
+                                                disabled={isApproveButtonDisabled(cls)}
+                                            ><FaCheck></FaCheck></button>
 
-                                            <button className="btn btn-error" onClick={() => handleDeny(cls)}>
+                                            <button className="btn btn-error" onClick={() => handleDeny(cls)}
+                                                disabled={isApproveButtonDisabled(cls)}
+                                            >
                                                 <FaBan></FaBan>
                                             </button>
 
