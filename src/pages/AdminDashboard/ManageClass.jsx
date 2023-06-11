@@ -2,10 +2,13 @@ import { FaBan, FaCheck, FaPencilAlt } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { HashLoader } from "react-spinners";
+import Swal from "sweetalert2";
 
 const ManageClass = () => {
+
+    
     const [axiosSecure] = useAxiosSecure();
-    const { data: allClass = [], refetch, isLoading } = useQuery(['users'], async () => {
+    const { data: allClass = [], refetch, isLoading } = useQuery(['class'], async () => {
         const res = await axiosSecure.get('/class')
         return res.data;
     })
@@ -14,6 +17,46 @@ const ManageClass = () => {
         return <>
         <HashLoader className="text-center text-5xl mx-auto my-12" color="rgba(214, 189, 54, 0.86)"></HashLoader>
         </>
+    }
+    const handleApprove = (cls) =>{
+        fetch(`http://localhost:5000/class/approve/${cls._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'The Class is Approved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+
+            })
+    }
+    const handleDeny = (cls) =>{
+        fetch(`http://localhost:5000/class/deny/${cls._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'The Class is Denied',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+
+            })
     }
     return (
 
@@ -32,11 +75,11 @@ const ManageClass = () => {
                 </dialog>
             </div>
 
-            <div className="overflow-x-auto mx-auto ms-28 mt-10">
-                <table className="table">
+            <div className="overflow-x-auto mx-auto ms-28 mt-10 animate__animated animate__fadeInRight">
+                <table className="table table-zebra">
                     {/* head */}
                     <thead>
-                        <tr className="font-semibold">
+                        <tr className="font-bold ">
                             <th>
                                 #
                             </th>
@@ -77,9 +120,9 @@ const ManageClass = () => {
                         <td>{cls.Status}</td>
                         <td>
                             <div className="grid grid-cols-3 gap-3 ">
-                                <button className="btn btn-success "><FaCheck></FaCheck></button>
+                                <button className="btn btn-success " onClick={() => handleApprove(cls)}><FaCheck></FaCheck></button>
 
-                                <button className="btn btn-error">
+                                <button className="btn btn-error"  onClick={() => handleDeny(cls)}>
                                     <FaBan></FaBan>
                                 </button>
 

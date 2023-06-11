@@ -9,13 +9,13 @@ const PopularClass = () => {
 
   return (
     <div>
-      <p className='text-center text-3xl my-6'><h1>Our Popular Classes</h1></p>
+      <p className="text-center text-3xl my-6 "><h1>Our Popular Classes</h1></p>
       <Carousel
         additionalTransfrom={0}
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
-        className=""
+        className=" animate__animated animate__fadeInLeft"
         containerClass="container-with-dots"
         dotListClass=""
         draggable
