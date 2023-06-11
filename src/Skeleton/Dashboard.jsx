@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import './Dashboard.css';
-import { FaBars, FaChalkboardTeacher, FaHome, FaLaptop, FaRegEdit, FaUsers } from 'react-icons/fa'
+import { FaBars, FaCartArrowDown, FaChalkboardTeacher, FaHome, FaLaptop, FaLaptopHouse, FaMoneyCheckAlt, FaPlus, FaRegEdit,  FaSchool, FaUsers } from 'react-icons/fa'
 
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
@@ -59,9 +59,9 @@ const Dashboard = () => {
                         }
                         {
                             isStudent && <>
-                                               <NavLink to="allusers" className="link mt-24 my-2">
+                                               <NavLink to="student/enrolledclass" className="link mt-24 my-2">
                             <div className="icon text-2xl block float-left">
-                                <FaUsers></FaUsers>
+                                <FaLaptopHouse></FaLaptopHouse>
                                 </div>
                                 {isOpen && <AnimatePresence>
                                         <motion.div className='link_text font-medium '>My Enrolled Classes</motion.div>
@@ -70,12 +70,22 @@ const Dashboard = () => {
                         </NavLink>
   
                    
-                        <NavLink to="allclass" className="link mb-2">
+                        <NavLink to="student/selectedclass" className="link mb-2">
                         <div className="icon text-2xl block float-left">
-                        <FaRegEdit></FaRegEdit>
+                       <FaCartArrowDown></FaCartArrowDown>
                                 </div>
                         {isOpen && <AnimatePresence>
                                         <motion.div className='link_text '>My Selected Classes</motion.div>
+                                    </AnimatePresence>}
+                        </NavLink>
+
+
+                        <NavLink to="student/payment" className="link mb-2">
+                        <div className="icon text-2xl block float-left">
+                        <FaMoneyCheckAlt></FaMoneyCheckAlt>
+                                </div>
+                        {isOpen && <AnimatePresence>
+                                        <motion.div className='link_text '>Payment</motion.div>
                                     </AnimatePresence>}
                         </NavLink>
                             </>
@@ -84,9 +94,9 @@ const Dashboard = () => {
 
                         {
                             isInst && <>
-                                               <NavLink to="allusers" className="link mt-24 my-2">
+                                               <NavLink to="instructor/addclass" className="link mt-24 my-2">
                             <div className="icon text-2xl block float-left">
-                                <FaUsers></FaUsers>
+                                <FaPlus></FaPlus>
                                 </div>
                                 {isOpen && <AnimatePresence>
                                         <motion.div className='link_text font-medium '>Add a Class</motion.div>
@@ -95,9 +105,9 @@ const Dashboard = () => {
                         </NavLink>
   
                    
-                        <NavLink to="allclass" className="link mb-2">
+                        <NavLink to="instructor/myclass" className="link mb-2">
                         <div className="icon text-2xl block float-left">
-                        <FaRegEdit></FaRegEdit>
+                        <FaSchool></FaSchool>
                                 </div>
                         {isOpen && <AnimatePresence>
                                         <motion.div className='link_text '>My Classes</motion.div>

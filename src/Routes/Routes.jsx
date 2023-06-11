@@ -13,6 +13,12 @@ import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import AddClass from "../pages/InstructorDashboard/AddClass";
+import MyClass from "../pages/InstructorDashboard/MyClass";
+import StudentRoute from "./StudentRoute";
+import SelectedClass from "../pages/StudentDashboard/SelectedClass";
+import EnrolledClass from "../pages/StudentDashboard/EnrolledClass";
+import Payment from "../pages/StudentDashboard/Payment";
 
 
 
@@ -58,6 +64,29 @@ import InstructorRoute from "./InstructorRoute";
           path: "allclass",
           element: <InstructorRoute><ManageClass></ManageClass></InstructorRoute>
         },
+        //instructor route
+        {
+          path: "instructor/addclass",
+          element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+        },
+        {
+          path: "instructor/myclass",
+          element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
+        },
+        // student route
+        {
+          path: "student/selectedclass",
+          element: <StudentRoute><SelectedClass></SelectedClass></StudentRoute>
+        },
+       {
+        path: "student/enrolledclass",
+        element: <StudentRoute><EnrolledClass></EnrolledClass></StudentRoute>
+       },
+       {
+        path: "student/payment",
+        element: <StudentRoute><Payment></Payment></StudentRoute>
+       }
+
        
       ]
     },
