@@ -14,7 +14,6 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isInst] = useInstructor();
     const [isStudent] = useStudent();
-    console.log('Student in dashboard', isStudent);
     const [isOpen, setIsOpen] = useState(true);
     const toggle = () => {
         setIsOpen(!isOpen);

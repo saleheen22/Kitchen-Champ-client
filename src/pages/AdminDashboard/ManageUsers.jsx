@@ -1,18 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-
+import { HashLoader } from "react-spinners";
 
 const ManageUsers = () => {
    
+   
 
     const [axiosSecure] = useAxiosSecure();
-    const { data: users = [], refetch } = useQuery(
+    const { data: users = [], refetch, isLoading } = useQuery(
         ['users'], async () => {
             const res = await axiosSecure.get('/users')
             return res.data;
         })
     console.log(users);
+    if(isLoading){
+        return <>
+        <HashLoader className="text-center text-5xl mx-auto my-12" color="rgba(214, 189, 54, 0.86)"></HashLoader>
+        </>
+    }
 
 
     const handleMakeAdmin = user => {
