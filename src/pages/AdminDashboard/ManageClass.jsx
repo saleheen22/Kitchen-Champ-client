@@ -3,22 +3,31 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { HashLoader } from "react-spinners";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ManageClass = () => {
+    const [check, setCheck] = useState({})
 
-    
+
+    const [classId, setClassId] = useState('');
+    const [textareaValue, setTextareaValue] = useState('');
+
+    const handleTextareaChange = (event) => {
+        setTextareaValue(event.target.value);
+    };
+
     const [axiosSecure] = useAxiosSecure();
     const { data: allClass = [], refetch, isLoading } = useQuery(['class'], async () => {
         const res = await axiosSecure.get('/class')
         return res.data;
     })
     console.log(allClass)
-    if(isLoading){
+    if (isLoading) {
         return <>
-        <HashLoader className="text-center text-5xl mx-auto my-12" color="rgba(214, 189, 54, 0.86)"></HashLoader>
+            <HashLoader className="text-center text-5xl mx-auto my-12" color="rgba(214, 189, 54, 0.86)"></HashLoader>
         </>
     }
-    const handleApprove = (cls) =>{
+    const handleApprove = (cls) => {
         fetch(`http://localhost:5000/class/approve/${cls._id}`, {
             method: 'PATCH'
         })
@@ -38,13 +47,12 @@ const ManageClass = () => {
 
             })
     }
-    const handleDeny = (cls) =>{
+    const handleDeny = (cls) => {
         fetch(`http://localhost:5000/class/deny/${cls._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -58,6 +66,49 @@ const ManageClass = () => {
 
             })
     }
+
+    const handleId = (id) => {
+        setClassId(id);
+    }
+
+
+
+    const handleFeedback = () => {
+        console.log();
+        
+        const response = {
+            feedback: textareaValue
+        };
+        const id = classId;
+        setTextareaValue('');
+        setClassId('');
+
+
+        console.log('This is inside the feedback dkfdkjfdjfj', response)
+
+        fetch(`http://localhost:5000/class/feedback/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json', // Set the content type to "text/plain"
+              },
+            body: JSON.stringify(response)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if (data.modifiedCount) {
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'The Class is Denied',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+        })
+    }
     return (
 
         <div className="my-16 mx-auto">
@@ -65,13 +116,30 @@ const ManageClass = () => {
             <div>
                 <dialog id="my_modal_1" className="modal">
                     <form method="dialog" className="modal-box">
-                        <h3 className="font-bold text-lg">Hello!</h3>
-                        <p className="py-4">Press ESC key or click the button below to close</p>
-                        <div className="modal-action">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
-                        </div>
+                        <h3 className="font-bold text-lg">This is the feedback form</h3>
+
+
+                        <textarea
+                            name="feedback"
+                            className="border-4" rows={5}
+                            cols={50}
+
+                            value={textareaValue}
+
+                            onChange={handleTextareaChange}
+
+                        >
+
+                        </textarea>
+                        <input type="submit" value="Send" className="btn btn-warning w-1/6" onClick={handleFeedback}></input>
+                        {/* <div className="modal-action">
+
+                            <button className="btn ">Close</button>
+                        </div> */}
+
+
                     </form>
+
                 </dialog>
             </div>
 
@@ -95,48 +163,56 @@ const ManageClass = () => {
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                      {
-                        allClass.map((cls, index) => 
-                        <tr key={cls._id}>
-                        <td>
-                            {index+1}
-                        </td>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src={cls.image} alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{cls.className}</td>
-                        <td>{cls.instructorName}</td>
-                        <td>{cls.email}</td>
-                        <td className="text-end">{cls.seats}</td>
-                        <td className="text-end"> {cls.price}
-                        </td>
+                        {
+                            allClass.map((cls, index) =>
+                                <tr key={cls._id}>
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={cls.image} alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{cls.className}</td>
+                                    <td>{cls.instructorName}</td>
+                                    <td>{cls.email}</td>
+                                    <td className="text-end">{cls.seats}</td>
+                                    <td className="text-end"> {cls.price}
+                                    </td>
 
-                        <td>{cls.Status}</td>
-                        <td>
-                            <div className="grid grid-cols-3 gap-3 ">
-                                <button className="btn btn-success " onClick={() => handleApprove(cls)}><FaCheck></FaCheck></button>
+                                    <td>{cls.Status}</td>
+                                    {/* <td>{setCheck(cls?.Feedback)}</td> */}
+                                    <td>
+                                        <div className="grid grid-cols-3 gap-3 ">
+                                            <button className="btn btn-success " onClick={() => handleApprove(cls)}><FaCheck></FaCheck></button>
 
-                                <button className="btn btn-error"  onClick={() => handleDeny(cls)}>
-                                    <FaBan></FaBan>
-                                </button>
+                                            <button className="btn btn-error" onClick={() => handleDeny(cls)}>
+                                                <FaBan></FaBan>
+                                            </button>
 
-                                <button className="btn btn-warning" onClick={() => window.my_modal_1.showModal()}>
+                                            <button className="btn btn-warning"
 
-                                    <FaPencilAlt></FaPencilAlt>
-                                </button>
-                            </div>
-                        </td>
+                                                onClick={event => {
+                                                    window.my_modal_1.showModal()
+                                                    handleId(cls._id)
+                                                }}
 
-                    </tr>
-                        
+                                            >
+
+                                                <FaPencilAlt></FaPencilAlt>
+                                            </button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
                             )
-                      }
+                        }
 
                     </tbody>
                     {/* foot */}
