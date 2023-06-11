@@ -1,6 +1,7 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import './Dashboard.css';
-import {FaBars, FaChalkboardTeacher, FaHome, FaUsers} from 'react-icons/fa'
+import {FaBars, FaChalkboard, FaChalkboardTeacher, FaHome, FaLaptop, FaRegEdit, FaSchool, FaUsers} from 'react-icons/fa'
+
 import {  Link, NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from '../pages/Shared/Footer/Footer';
@@ -23,29 +24,53 @@ const Dashboard = () => {
                        
                     </div>
                     <section className='routes animate__animated animate__bounceInLeft mt-16'>
-                        <NavLink to="allusers" className="link mt-24 ">
-                            <div className="icon">
+                   
+                   <NavLink to="allusers" className="link mt-24 my-2">
+                            <div className="icon text-2xl block float-left">
                                 <FaUsers></FaUsers>
                                 </div>
                                 {isOpen && <AnimatePresence>
-                                        <motion.div className='link_text '>Manage Users</motion.div>
+                                        <motion.div className='link_text font-medium '>Manage Users</motion.div>
                                     </AnimatePresence>}
                             
                         </NavLink>
-                        <NavLink to="allclass" className="link">
-                        <div className="">
-                        <FaChalkboardTeacher></FaChalkboardTeacher>
+  
+                   
+                        <NavLink to="allclass" className="link mb-2">
+                        <div className="icon text-2xl block float-left">
+                        <FaRegEdit></FaRegEdit>
                                 </div>
                         {isOpen && <AnimatePresence>
                                         <motion.div className='link_text '>Manage Class</motion.div>
                                     </AnimatePresence>}
                         </NavLink>
-                        <NavLink to="/" className="link">
-                        <div className="">
+
+                        <NavLink to="/classes" className="link mb-2 ">
+                            <div className="icon text-2xl block float-left">
+                            <FaLaptop></FaLaptop>
+                            
+                                </div>
+                                {isOpen && <AnimatePresence>
+                                        <motion.div className='link_text font-medium flex-1'>See Class</motion.div>
+                                    </AnimatePresence>}
+                            
+                        </NavLink>
+                        <NavLink to="/instructors" className="link mb-2 ">
+                            <div className="icon text-2xl block float-left">
+                            
+                            <FaChalkboardTeacher></FaChalkboardTeacher>
+                                </div>
+                                {isOpen && <AnimatePresence>
+                                        <motion.div className='link_text font-medium flex-1'>Instructor</motion.div>
+                                    </AnimatePresence>}
+                            
+                        </NavLink>
+                        <NavLink to="/" className="link mb-2">
+                        <div className="text-2xl block float-left">
                         <FaHome></FaHome>
                                 </div>
                         {isOpen && <AnimatePresence>
-                                        <motion.div className='link_text '>Home</motion.div>
+                                        <motion.div className='link_text font-medium flex-1'>Home</motion.div>
                                     </AnimatePresence>}
 
                         </NavLink>

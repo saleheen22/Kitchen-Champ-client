@@ -43,6 +43,6 @@ a{
 }
 .link_text{
     white-space: nowrap;
-    font-size: 15px;
+    /* font-size: 15px; */
 }
 
