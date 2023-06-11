@@ -62,7 +62,7 @@ import Payment from "../pages/StudentDashboard/Payment";
         },
         {
           path: "allclass",
-          element: <InstructorRoute><ManageClass></ManageClass></InstructorRoute>
+          element: <AdminRoute><ManageClass></ManageClass></AdminRoute>
         },
         //instructor route
         {
