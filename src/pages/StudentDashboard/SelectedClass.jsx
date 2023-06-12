@@ -3,7 +3,7 @@ const SelectedClass = () => {
     return (
         <div>
             <Helmet>
-            <title>Kitchen Champ || Selected Class</title>
+            <title>Kitchen Champ || Enrolled Class</title>
             </Helmet>
             <h2>This is selected class page</h2>
         </div>

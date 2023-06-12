@@ -12,7 +12,7 @@ const Pay = () => {
         <div className='ms-52'>
             <h2>This is pay</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price}></CheckoutForm>
+                <CheckoutForm price={price} cart={cart}></CheckoutForm>
             </Elements>
         </div>
     );

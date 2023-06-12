@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import './Dashboard.css';
-import { FaBars, FaCartArrowDown, FaChalkboardTeacher, FaHome, FaLaptop, FaLaptopHouse, FaMoneyCheckAlt, FaPlus, FaRegEdit,  FaSchool, FaUsers } from 'react-icons/fa'
+import { FaBars, FaCartArrowDown, FaChalkboardTeacher, FaHome, FaLaptop, FaLaptopHouse, FaMoneyCheckAlt, FaPlus, FaRegEdit, FaSchool, FaUsers } from 'react-icons/fa'
 
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
@@ -58,60 +58,61 @@ const Dashboard = () => {
                         }
                         {
                             isStudent && <>
-                                               <NavLink to="student/enrolledclass" className="link mt-24 my-2">
-                            <div className="icon text-2xl block float-left">
-                                <FaLaptopHouse></FaLaptopHouse>
-                                </div>
-                                {isOpen && <AnimatePresence>
+                                <NavLink to="student/selectedclass
+" className="link mt-24 my-2">
+                                    <div className="icon text-2xl block float-left">
+                                        <FaLaptopHouse></FaLaptopHouse>
+                                    </div>
+                                    {isOpen && <AnimatePresence>
                                         <motion.div className='link_text font-medium '>My Enrolled Classes</motion.div>
                                     </AnimatePresence>}
-                            
-                        </NavLink>
-  
-                   
-                        <NavLink to="student/selectedclass" className="link mb-2">
-                        <div className="icon text-2xl block float-left">
-                       <FaCartArrowDown></FaCartArrowDown>
-                                </div>
-                        {isOpen && <AnimatePresence>
+
+                                </NavLink>
+
+
+                                <NavLink to="student/enrolledclass" className="link mb-2">
+                                    <div className="icon text-2xl block float-left">
+                                        <FaCartArrowDown></FaCartArrowDown>
+                                    </div>
+                                    {isOpen && <AnimatePresence>
                                         <motion.div className='link_text '>My Selected Classes</motion.div>
                                     </AnimatePresence>}
-                        </NavLink>
+                                </NavLink>
 
 
-                        <NavLink to="student/payment" className="link mb-2">
-                        <div className="icon text-2xl block float-left">
-                        <FaMoneyCheckAlt></FaMoneyCheckAlt>
-                                </div>
-                        {isOpen && <AnimatePresence>
+                                <NavLink to="student/payment" className="link mb-2">
+                                    <div className="icon text-2xl block float-left">
+                                        <FaMoneyCheckAlt></FaMoneyCheckAlt>
+                                    </div>
+                                    {isOpen && <AnimatePresence>
                                         <motion.div className='link_text '>Payment</motion.div>
                                     </AnimatePresence>}
-                        </NavLink>
+                                </NavLink>
                             </>
                         }
 
 
                         {
                             isInst && <>
-                                               <NavLink to="instructor/addclass" className="link mt-24 my-2">
-                            <div className="icon text-2xl block float-left">
-                                <FaPlus></FaPlus>
-                                </div>
-                                {isOpen && <AnimatePresence>
+                                <NavLink to="instructor/addclass" className="link mt-24 my-2">
+                                    <div className="icon text-2xl block float-left">
+                                        <FaPlus></FaPlus>
+                                    </div>
+                                    {isOpen && <AnimatePresence>
                                         <motion.div className='link_text font-medium '>Add a Class</motion.div>
                                     </AnimatePresence>}
-                            
-                        </NavLink>
-  
-                   
-                        <NavLink to="instructor/myclass" className="link mb-2">
-                        <div className="icon text-2xl block float-left">
-                        <FaSchool></FaSchool>
-                                </div>
-                        {isOpen && <AnimatePresence>
+
+                                </NavLink>
+
+
+                                <NavLink to="instructor/myclass" className="link mb-2">
+                                    <div className="icon text-2xl block float-left">
+                                        <FaSchool></FaSchool>
+                                    </div>
+                                    {isOpen && <AnimatePresence>
                                         <motion.div className='link_text '>My Classes</motion.div>
                                     </AnimatePresence>}
-                        </NavLink>
+                                </NavLink>
                             </>
                         }
 

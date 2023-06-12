@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 
-
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ cart, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -77,25 +77,35 @@ const CheckoutForm = ({ price }) => {
         setProcessing(false)
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
-            // save payment information to the server
-            // const payment = {
-            //     email: user?.email,
-            //     transactionId: paymentIntent.id,
-            //     price,
-            //     date: new Date(),
-            //     quantity: cart.length,
-            //     cartItems: cart.map(item => item._id),
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                date: new Date(),
+                quantity: cart.length,
+                className: cart.map(item => item.className),
+                classId: cart.map(item => item.classId),
+                cartItems: cart.map(item => item._id)
+
+        }
+            //     ,
             //     menuItems: cart.map(item => item.menuItemId),
             //     status: 'service pending',
             //     itemNames: cart.map(item => item.name)
             // }
-            // axiosSecure.post('/payments', payment)
-            //     .then(res => {
-            //         console.log(res.data);
-            //         if (res.data.result.insertedId) {
-            //             // display confirm
-            //         }
-            //     })
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.result.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your payment is successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
         }
 
 

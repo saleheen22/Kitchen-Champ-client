@@ -10,7 +10,6 @@ const Classes = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    const [data1, setData1] = useState();
     const [check, setCheck] = useState(true);
     const [axiosSecure] = useAxiosSecure();
     const [filteredUser, setFilteredUser] = useState('');
