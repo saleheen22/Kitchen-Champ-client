@@ -3,8 +3,13 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Classes = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const [data1, setData1] = useState();
     const [check, setCheck] = useState(true);
     const [axiosSecure] = useAxiosSecure();
@@ -12,6 +17,47 @@ const Classes = () => {
 
     const { user } = useAuth();
     const userEmail = user?.email;
+
+
+    const handleCard = (id, img, clsName) => {
+        if(user){
+            const cart = {classId: id, studentEmail: userEmail, paid: 'No', classImg: img, className: clsName}
+            console.log('This is inside the handlecard', cart)
+            axiosSecure.post('/addcart', cart)
+            .then(data => {
+                
+                if(data.data.insertedId){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Class added to your card successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+                else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'The class is already added!',
+                        footer: '<a href="">Add a new class</a>'
+                      })
+                }
+            })
+
+        }
+
+        else{
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please Login First',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              navigate(from, { replace: true });
+        }
+    }
 
 
 
@@ -84,21 +130,21 @@ const Classes = () => {
                                         {
                                             user ? <>
                                             
-                                                {filteredUser === 'Student' ? <>
-                                                    <button className="btn btn-warning" disabled={false}>Add</button>
+                                                {filteredUser === 'Student' && c.seats>0 ? <>
+                                                    <button className="btn btn-warning" onClick={()=> handleCard(c._id, c.image, c.className)} disabled={false}>Select</button>
                                                 </> : <>
-                                                    <button className="btn btn-warning" disabled={true}>Add</button>
+                                                    <button className="btn btn-warning" disabled={true}>Select</button>
                                                 </>}
                                             
                                             </>:
                                             <>
                                             {
                                                 c.seats === 0 ? <>
-                                                <button className="btn btn-warning" disabled={true}>Add</button>
+                                                <button className="btn btn-warning" disabled={true}>Select</button>
                                                 </>
                                                 :
                                                 <>
-                                                <button className="btn btn-warning">Add</button>
+                                                <button onClick={()=> handleCard(c._id, c.image, c.className)} className="btn btn-warning">Select</button>
                                                 </>
 
                                             }

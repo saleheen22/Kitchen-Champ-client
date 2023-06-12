@@ -5,6 +5,7 @@ import { HashLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
+
 const ManageClass = () => {
    
 
