@@ -19,6 +19,7 @@ import StudentRoute from "./StudentRoute";
 import SelectedClass from "../pages/StudentDashboard/SelectedClass";
 import EnrolledClass from "../pages/StudentDashboard/EnrolledClass";
 import Payment from "../pages/StudentDashboard/Payment";
+import NotFound from "../pages/NotFound/NotFound";
 
 
 
@@ -90,4 +91,10 @@ import Payment from "../pages/StudentDashboard/Payment";
        
       ]
     },
+    {
+      
+        path: "*",
+        element: <NotFound></NotFound>
+      
+    }
   ]);
