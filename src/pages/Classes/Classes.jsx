@@ -63,11 +63,11 @@ const Classes = () => {
         <div className="mt-40 max-w-screen-xl mx-auto">
             <h2 className="text-3xl text-center mt-14 ">All Our Classes</h2>
 
-            <div className="grid grid-cols-3 gap-7">
+            <div className="grid grid-cols-3 gap-7 mb-28 mt-10">
                 {
                     cls.map(c => <>
                         <div key={c._id} className="max-h-screen">
-                            <div className="card w-96 h-full bg-base-100 shadow-xl">
+                            <div className={c.seats === 0 ? 'card w-96 h-full  shadow-xl bg-red-600': 'card w-96 h-full bg-base-100 shadow-xl'  }>
                                 <figure><img className="card-image" src={c.image} alt="Shoes" /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">
@@ -92,7 +92,16 @@ const Classes = () => {
                                             
                                             </>:
                                             <>
-                                            <button className="btn btn-warning">Add</button>
+                                            {
+                                                c.seats === 0 ? <>
+                                                <button className="btn btn-warning" disabled={true}>Add</button>
+                                                </>
+                                                :
+                                                <>
+                                                <button className="btn btn-warning">Add</button>
+                                                </>
+
+                                            }
                                             </>
                                 }
                                         {/* <div className="badge badge-outline">Fashion</div>
