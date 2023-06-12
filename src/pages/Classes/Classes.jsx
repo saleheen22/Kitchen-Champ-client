@@ -19,9 +19,9 @@ const Classes = () => {
     const userEmail = user?.email;
 
 
-    const handleCard = (id, img, clsName) => {
+    const handleCard = (id, img, clsName, price) => {
         if(user){
-            const cart = {classId: id, studentEmail: userEmail, paid: 'No', classImg: img, className: clsName}
+            const cart = {classId: id, studentEmail: userEmail, paid: 'No', classImg: img, className: clsName, price: price}
             console.log('This is inside the handlecard', cart)
             axiosSecure.post('/addcart', cart)
             .then(data => {
@@ -131,7 +131,7 @@ const Classes = () => {
                                             user ? <>
                                             
                                                 {filteredUser === 'Student' && c.seats>0 ? <>
-                                                    <button className="btn btn-warning" onClick={()=> handleCard(c._id, c.image, c.className)} disabled={false}>Select</button>
+                                                    <button className="btn btn-warning" onClick={()=> handleCard(c._id, c.image, c.className, c.price)} disabled={false}>Select</button>
                                                 </> : <>
                                                     <button className="btn btn-warning" disabled={true}>Select</button>
                                                 </>}
@@ -144,7 +144,7 @@ const Classes = () => {
                                                 </>
                                                 :
                                                 <>
-                                                <button onClick={()=> handleCard(c._id, c.image, c.className)} className="btn btn-warning">Select</button>
+                                                <button onClick={()=> handleCard(c._id, c.image, c.className, c.price)} className="btn btn-warning">Select</button>
                                                 </>
 
                                             }

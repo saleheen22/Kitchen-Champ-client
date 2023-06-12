@@ -20,6 +20,8 @@ import SelectedClass from "../pages/StudentDashboard/SelectedClass";
 import EnrolledClass from "../pages/StudentDashboard/EnrolledClass";
 import Payment from "../pages/StudentDashboard/Payment";
 import NotFound from "../pages/NotFound/NotFound";
+// import CheckoutForm from "../pages/StudentDashboard/CheckoutForm";
+import Pay from "../pages/StudentDashboard/Pay";
 
 
 
@@ -86,11 +88,17 @@ import NotFound from "../pages/NotFound/NotFound";
        {
         path: "student/payment",
         element: <StudentRoute><Payment></Payment></StudentRoute>
+       },
+       {
+        path: "student/pay",
+        element: <Pay></Pay>
        }
+
 
        
       ]
     },
+
     {
       
         path: "*",

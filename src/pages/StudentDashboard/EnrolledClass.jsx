@@ -6,7 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 const EnrolledClass = () => {
+
+
+
+
+    
     const [axiosSecure] = useAxiosSecure();
     const {user} = useAuth();
 
@@ -59,6 +65,7 @@ const EnrolledClass = () => {
             </Helmet>
             <div>
             <div className=" my-16 mx-auto  ">
+               
         <h2 className="text-5xl ms-80 ps-40">My Enrolled Classes</h2>
 
         <div className="mx-auto ms-64 mt-10">
@@ -72,6 +79,7 @@ const EnrolledClass = () => {
                             </th>
                             <th>Image</th>
                             <th>Class</th>
+                            <th className="text-end">Price</th>
                             <th>Payment</th>
                             <th>Delete</th>
  
@@ -97,12 +105,15 @@ const EnrolledClass = () => {
                                     <td>
                                         <div className="font-bold">{cls.className}</div>
                                     </td>
-                                    
+                                    <td className="text-end">{cls.price}</td>
                                     <td>
                                         <div>
-                                            <button className="btn  btn-outline btn-success w-28 " 
+                                        <Link to="/dashboard/student/pay">
+                                        
+                                        <button className="btn  btn-outline btn-success w-28 "  
                                             
                                             >Pay</button>
+                                        </Link>
                                   
                                         </div>
                                     </td>
