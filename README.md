@@ -1,2 +1,2 @@
-![Kitchen Champ](/public/logo/black-tansparentBg.png "This is the logo of my website kitchen Champ").
+Logo: ![Kitchen Champ](/public/logo/black-tansparentBg.png "This is the logo of my website kitchen Champ").
 
