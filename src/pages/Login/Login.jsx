@@ -21,7 +21,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || "/";
 
-    const [error, setError] = useState("f");
+    const [error, setError] = useState("");
     const [passtext, setPasstext] = useState('text');
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const { signIn, loading } = useAuth();

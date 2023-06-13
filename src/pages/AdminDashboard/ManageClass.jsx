@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { HashLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageClass = () => {
@@ -124,6 +125,9 @@ const ManageClass = () => {
     return (
 
         <div className="my-16 mx-auto">
+            <Helmet>
+            <title>Kitchen Champ || Manage Class</title>
+            </Helmet>
             <h2 className="text-5xl ms-80 ps-40">All The Classes</h2>
             <div>
                 <dialog id="my_modal_1" className="modal">

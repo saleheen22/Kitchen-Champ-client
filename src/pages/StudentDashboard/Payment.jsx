@@ -1,12 +1,79 @@
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const Payment = () => {
+    const {user} = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const { data: myClass = [], refetch, isLoading } = useQuery(
+        ['myclass'], async () => {
+            const res = await axiosSecure.get(`/myenrolledclass?email=${user?.email}`)
+            return res.data;
+        })
     return (
         <div>
-            <Helmet>
-            <title>Kitchen Champ || Payment History</title>
-            </Helmet>
-           <h2>This is a payment page</h2> 
+        <Helmet>
+        <title>Kitchen Champ || Enrolled Class</title>
+        </Helmet>
+        <div className="my-16 mx-auto ">
+                     
+    <h2 className="text-5xl ms-80 ps-40">Enrolled Class</h2>
+
+
+    <div className="mx-auto ms-64 mt-10">
+        <div className="overflow-x-auto animate__animated animate__fadeInDown">
+            <table className="table table-zebra">
+                {/* head */}
+                <thead>
+                    <tr className="text-2xl">
+                        <th  >
+                            #
+                        </th>
+                        <th>Class Name</th>
+                        <th className="text-end" >Price Paid</th>
+                        <th >Transaction Id</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* row 1 */}
+                    {
+                        myClass.map((cls, index) =>
+                            <tr key={cls._id}>
+                                <th>
+                                    {index + 1}
+                                </th>
+  
+                                <td>
+                                    <div className="font-bold">{cls.className}</div>
+                                </td>
+                                <td className="text-end">${cls.price}</td>
+                                <td>{cls.transactionId}</td>
+                          
+                                
+                            
+                                {/* <td>
+                                <button className="btn btn-outline w-28  btn-warning" onClick={() => handleMakeAdmin1(user)}>Make rolee</button>
+                                </td> */}
+
+
+                            </tr>
+
+                        )
+                    }
+
+
+
+
+                </tbody>
+
+
+            </table>
         </div>
+    </div>
+        </div>
+    </div>
     );
 };
 

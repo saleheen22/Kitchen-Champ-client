@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
     const navigate = useNavigate();
@@ -18,9 +19,9 @@ const Classes = () => {
     const userEmail = user?.email;
 
 
-    const handleCard = (id, img, clsName, price) => {
+    const handleCard = (id, img, clsName, price, instructorName) => {
         if(user){
-            const cart = {classId: id, studentEmail: userEmail, paid: 'No', classImg: img, className: clsName, price: price}
+            const cart = {classId: id, studentEmail: userEmail, paid: 'No', classImg: img, className: clsName, price: price, instructorName: instructorName}
             console.log('This is inside the handlecard', cart)
             axiosSecure.post('/addcart', cart)
             .then(data => {
@@ -54,7 +55,7 @@ const Classes = () => {
                 showConfirmButton: false,
                 timer: 1500
               })
-              navigate(from, { replace: true });
+              navigate('/login');
         }
     }
 
@@ -106,6 +107,9 @@ const Classes = () => {
 
     return (
         <div className="mt-40 max-w-screen-xl mx-auto">
+            <Helmet>
+            <title>Kitchen Champ || Courses</title>
+            </Helmet>
             <h2 className="text-3xl text-center mt-14 ">All Our Classes</h2>
 
             <div className="grid grid-cols-3 gap-7 mb-28 mt-10">
@@ -130,7 +134,7 @@ const Classes = () => {
                                             user ? <>
                                             
                                                 {filteredUser === 'Student' && c.seats>0 ? <>
-                                                    <button className="btn btn-warning" onClick={()=> handleCard(c._id, c.image, c.className, c.price)} disabled={false}>Select</button>
+                                                    <button className="btn btn-warning" onClick={()=> handleCard(c._id, c.image, c.className, c.price, c.instructorName)} disabled={false}>Select</button>
                                                 </> : <>
                                                     <button className="btn btn-warning" disabled={true}>Select</button>
                                                 </>}
@@ -143,7 +147,7 @@ const Classes = () => {
                                                 </>
                                                 :
                                                 <>
-                                                <button onClick={()=> handleCard(c._id, c.image, c.className, c.price)} className="btn btn-warning">Select</button>
+                                                <button onClick={()=> handleCard(c._id, c.image, c.className, c.price, c.instructorName)} className="btn btn-warning">Select</button>
                                                 </>
 
                                             }

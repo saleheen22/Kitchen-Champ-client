@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { HashLoader } from "react-spinners";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const MyClass = () => {
@@ -20,9 +21,12 @@ const MyClass = () => {
     }
     return (
         <div className=" my-16 mx-auto  ">
-        <h2 className="text-5xl ms-80 ps-40">All The users</h2>
+            <Helmet>
+            <title>Kitchen Champ || My Class</title>
+            </Helmet>
+        <h2 className="text-5xl ms-96 ps-40">My Classes</h2>
 
-        <div className="mx-auto ms-64 mt-10">
+        <div className="mx-auto ms-48 mt-10">
             <div className="overflow-x-auto animate__animated animate__fadeInDown">
                 <table className="table table-zebra">
                     {/* head */}
@@ -71,7 +75,9 @@ const MyClass = () => {
                                   
                                         </div>
                                     </td>
-                                    <td className="text-end">534343434</td>
+                                    <td className="text-end">{cls.StudentCount ? <>{cls.StudentCount}</> :
+                                    <>0</>
+                                    }</td>
                                     {/* <td>
                                     <button className="btn btn-outline w-28  btn-warning" onClick={() => handleMakeAdmin1(user)}>Make rolee</button>
                                     </td> */}

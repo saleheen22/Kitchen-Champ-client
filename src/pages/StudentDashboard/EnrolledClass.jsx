@@ -66,7 +66,7 @@ const EnrolledClass = () => {
             <div>
             <div className=" my-16 mx-auto  ">
                
-        <h2 className="text-5xl ms-80 ps-40">My Selected Classes</h2>
+        <h2 className="text-5xl ms-48 ps-40">My Selected Classes</h2>
 
         <div className="mx-auto ms-64 mt-10">
             <div className="overflow-x-auto animate__animated animate__fadeInDown">
@@ -105,7 +105,7 @@ const EnrolledClass = () => {
                                     <td>
                                         <div className="font-bold">{cls.className}</div>
                                     </td>
-                                    <td className="text-end">{cls.price}</td>
+                                    <td className="text-end">${cls.price}</td>
                                     <td>
                                         <div>
                                         <Link to="/dashboard/student/pay" state ={cls}>

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 
 
-const CheckoutForm = ({ price, id }) => {
+const CheckoutForm = ({ price, id, classId, image, className, instructorName  }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -16,7 +16,7 @@ const CheckoutForm = ({ price, id }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
-
+    console.log( price, id, classId, image, className, instructorName )
     useEffect(() => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
@@ -82,9 +82,14 @@ const CheckoutForm = ({ price, id }) => {
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
-                classId: id
+                classId: classId,
+                cartId: id,
+                className,
+                img: image,
+                instructorName
 
         }
+        console.log(payment)
     
             axiosSecure.post('/payments', payment)
                 .then(res => {

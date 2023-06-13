@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { HashLoader } from "react-spinners";
 import './Instructor.css'
+import { Helmet } from "react-helmet-async";
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
     const { data: instructors = [], isLoading } = useQuery(
@@ -20,6 +21,9 @@ const Instructors = () => {
     }
     return (
         <div className="mt-36 max-w-screen-xl mx-auto">
+            <Helmet>
+            <title>Kitchen Champ || Instructors</title>
+            </Helmet>
             <div className="grid grid-cols-3 gap-5">
                 {
                     instructors.map(inst => <>

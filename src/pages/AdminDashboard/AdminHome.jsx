@@ -4,6 +4,7 @@ import {FaBars, FaChalkboardTeacher, FaHome, FaUsers} from 'react-icons/fa'
 import {  Link, NavLink} from 'react-router-dom';
 import { useState } from 'react';
 import Footer from '../Shared/Footer/Footer';
+import { Helmet } from 'react-helmet-async';
 
 const AdminHome = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -13,6 +14,9 @@ const AdminHome = () => {
     return (
         <div >
             <div className="main-container mx-0 ">
+            <Helmet>
+            <title>Kitchen Champ || Admin Home</title>
+            </Helmet>
                 <motion.div animate = {{width: isOpen? "200px" : "45px"}} className='sidebar  text-white'>
                     <div className="top_section  pt-5">
                         {isOpen && <h1 className='logo1 '>

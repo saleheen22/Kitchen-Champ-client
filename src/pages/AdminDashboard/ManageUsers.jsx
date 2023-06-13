@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { HashLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
    
@@ -94,6 +95,9 @@ const ManageUsers = () => {
 
     return (
         <div className=" my-16 mx-auto  ">
+            <Helmet>
+            <title>Kitchen Champ || Manage Users</title>
+            </Helmet>
             <h2 className="text-5xl ms-80 ps-40">All The users</h2>
 
             <div className="mx-auto ms-64 mt-10">

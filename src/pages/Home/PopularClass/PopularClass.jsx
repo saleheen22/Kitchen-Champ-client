@@ -1,10 +1,17 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './PopularClass.css';
-// const img1 = "../../../../public/logo/checking.jpg"
-// const img1 = "https://balbetta.sirv.com/pics/abidu-mannan.jpg";
-const img1 = "https://i.ibb.co/KXvKbzM/sheldor.png";
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+
 const PopularClass = () => {
+  const [axiosSecure] = useAxiosSecure();
+
+  const { data: myClass = [] } = useQuery(
+      ['instructor'], async () => {
+          const res = await axiosSecure.get('/popularclass')
+          return res.data;
+      })
 
 
   return (
@@ -63,56 +70,25 @@ const PopularClass = () => {
         slidesToSlide={1}
         swipeable
       >
-        <div className="card w-96 glass h-full">
-          <figure><img className='h-64 w-full' src={img1} alt="car!" /></figure>
+      
+        {
+          myClass.map(cls => 
+            <>
+            <div key={cls._id} className="card w-96 glass h-full">
+          <figure><img className='h-64 w-full' src={cls.image} alt="car!" /></figure>
           <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
+            <h2 className="card-title">{cls.className}</h2>
+            <p>Instructor: <span>{cls.instructorName}</span></p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
+              <button className="btn btn-warning">Learn now!</button>
             </div>
           </div>
         </div>
-        <div className="card w-96 glass h-full">
-          <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!" /></figure>
-          <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
-          </div>
-        </div>
-        <div className="card w-96 glass h-full">
-          <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!" /></figure>
-          <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
-          </div>
-        </div>
-        <div className="card w-96 glass h-full">
-          <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!" /></figure>
-          <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
-          </div>
-        </div>
-        <div className="card w-96 glass h-full">
-          <figure><img className='h-64 w-full' src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="car!" /></figure>
-          <div className="card-body">
-            <h2 className="card-title">Life hack</h2>
-            <p>How to park your car at your garage?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div>
-          </div>
-        </div>
+            </>
+            
+            )
+        }
+        
 
       </Carousel>
     </div>

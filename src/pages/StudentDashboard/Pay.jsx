@@ -5,8 +5,9 @@ import { useLocation } from 'react-router-dom';
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Pay = () => {
     const location = useLocation();
-    const {price, _id} = location.state;
-    console.log(price, _id);
+    const {price, _id, classId, classImg, className, instructorName} = location.state;
+    // console.log()
+
    
 
 
@@ -14,7 +15,7 @@ const Pay = () => {
         <div className='ms-52'>
             <h2>This is pay</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price} id={_id}></CheckoutForm>
+                <CheckoutForm price={price} id={_id} classId= {classId} image={classImg} className = {className} instructorName={instructorName}></CheckoutForm>
             </Elements>
         </div>
     );
