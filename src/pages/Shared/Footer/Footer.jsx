@@ -1,12 +1,10 @@
-
+import logo from '../../../../public/logo/white-transparentBg.png'
 const Footer = () => {
     return (
         <div>
             <footer className="footer p-10 bg-neutral text-neutral-content">
-                <div className="mt-12">
-                   <p className="text-3xl">KITCHEN <br />
-                   CHAMP
-                   </p>
+                <div className="mt-12 w-72">
+                   <img src={logo} alt="" />
 
                 </div>
                 <div>
