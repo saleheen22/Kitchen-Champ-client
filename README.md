@@ -1,7 +1,7 @@
 ![Kitchen Champ](/public/logo/black-tansparentBg.png "This is the logo of my website kitchen Champ").
 
 ## The live link
-A [Kitchen Champ](https://kitchen-champ.web.app/ "Kitchen Champ live link").
+[Kitchen Champ](https://kitchen-champ.web.app/ "Kitchen Champ live link").
 
 
 ### Notable Packages Used:
