@@ -31,7 +31,7 @@ const PopularInstructor = () => {
             const res = await axiosSecure.get('/topinstructor')
             return res.data;
         })
-        console.log(myClass)
+    console.log(myClass)
 
 
 
@@ -75,9 +75,9 @@ const PopularInstructor = () => {
                                 <p className='text-justify mt-2 p-0'>{myClass[0]?.name} </p>
 
                                 <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
-                        
+
                             </div>
-                           
+
 
 
 
@@ -86,79 +86,79 @@ const PopularInstructor = () => {
                         {/* no 2 */}
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
 
-<figure><img className='images' src={myClass[1]?.pic} alt="Shoes" /></figure>
-<div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
-    <p className='text-justify mt-2 p-0'>{myClass[1]?.name} </p>
+                            <figure><img className='images' src={myClass[1]?.pic} alt="Shoes" /></figure>
+                            <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
+                                <p className='text-justify mt-2 p-0'>{myClass[1]?.name} </p>
 
-    <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
 
-</div>
-
-
+                            </div>
 
 
-</div>
+
+
+                        </div>
                         {/* no 3 */}
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
 
-<figure><img className='images' src={myClass[2]?.pic} alt="Shoes" /></figure>
-<div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
-    <p className='text-justify mt-2 p-0'>{myClass[2]?.name} </p>
+                            <figure><img className='images' src={myClass[2]?.pic} alt="Shoes" /></figure>
+                            <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
+                                <p className='text-justify mt-2 p-0'>{myClass[2]?.name} </p>
 
-    <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
 
-</div>
-
-
+                            </div>
 
 
-</div>
+
+
+                        </div>
                         {/* no 4 */}
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
 
-<figure><img className='images' src={myClass[3]?.pic} alt="Shoes" /></figure>
-<div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
-    <p className='text-justify mt-2 p-0'>{myClass[3]?.name} </p>
+                            <figure><img className='images' src={myClass[3]?.pic} alt="Shoes" /></figure>
+                            <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
+                                <p className='text-justify mt-2 p-0'>{myClass[3]?.name} </p>
 
-    <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
 
-</div>
-
-
+                            </div>
 
 
-</div>
+
+
+                        </div>
                         {/* no 5 */}
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
 
-<figure><img className='images' src={myClass[4]?.pic} alt="Shoes" /></figure>
-<div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
-    <p className='text-justify mt-2 p-0'>{myClass[4]?.name} </p>
+                            <figure><img className='images' src={myClass[4]?.pic} alt="Shoes" /></figure>
+                            <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
+                                <p className='text-justify mt-2 p-0'>{myClass[4]?.name} </p>
 
-    <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
 
-</div>
-
-
+                            </div>
 
 
-</div>
+
+
+                        </div>
                         {/* no 6 */}
 
                         <div className={`carousel__cell number-slide8 shadow-xl card card-compact border-0 `}>
 
-<figure><img className='images' src={myClass[5]?.pic} alt="Shoes" /></figure>
-<div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
-    <p className='text-justify mt-2 p-0'>{myClass[5]?.name} </p>
+                            <figure><img className='images' src={myClass[5]?.pic} alt="Shoes" /></figure>
+                            <div className="card-body  h-1/6 group grid grid-cols-2 gap-2">
+                                <p className='text-justify mt-2 p-0'>{myClass[5]?.name} </p>
 
-    <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
+                                <button className='btn btn-xs btn-outline btn-warning  mt-2' onClick={() => window.my_modal_5.showModal()}>Profile</button>
 
-</div>
-
-
+                            </div>
 
 
-</div>
+
+
+                        </div>
 
 
                     </div>

@@ -23,7 +23,7 @@ const ManageUsers = () => {
 
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://kitchen-champ-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -42,33 +42,14 @@ const ManageUsers = () => {
 
             })
     }
-    // const handleMakeAdmin1 = user => {
-    //     fetch(`http://localhost:5000/users/adminClk/${user._id}`, {
-    //         method: 'PATCH'
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             if (data.modifiedCount) {
-    //                 refetch();
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: `${user.name} is an Instructor Now!`,
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 })
-    //             }
 
-    //         })
-    // }
     const isAdminButtonDisabled = (user) => {
         console.log('Insided button', user.isAdminClicked === true)
         return user.isAdminClicked === true;
       };
 
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://kitchen-champ-server.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -4,7 +4,7 @@ import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 const Reviews = () => {
   const [reviewData, setReviewData] =useState([]);
   useEffect(()=>{
-    fetch('http://localhost:5000/reviews')
+    fetch('https://kitchen-champ-server.vercel.app/reviews')
     .then(res => res.json())
     .then(data=>{
       console.log(data);

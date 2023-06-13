@@ -79,7 +79,7 @@ const Classes = () => {
 
 
     if (check && userEmail) {
-        fetch('http://localhost:5000/allusers')
+        fetch('https://kitchen-champ-server.vercel.app/allusers')
             .then(res => res.json())
             .then(data => {
                 setCheck(false)

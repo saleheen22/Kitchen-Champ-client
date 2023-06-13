@@ -33,7 +33,7 @@ const ManageClass = () => {
     const handleApprove = (cls) => {
 
         console.log(cls._id);
-        fetch(`http://localhost:5000/class/checking/${cls._id}`, {
+        fetch(`https://kitchen-champ-server.vercel.app/class/checking/${cls._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -73,7 +73,7 @@ const ManageClass = () => {
 
         console.log('This is inside the feedback dkfdkjfdjfj', response)
 
-        fetch(`http://localhost:5000/class/feedback/${id}`, {
+        fetch(`https://kitchen-champ-server.vercel.app/class/feedback/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json', // Set the content type to "text/plain"
@@ -97,7 +97,7 @@ const ManageClass = () => {
             })
     }
     const handleDeny = (cls) => {
-        fetch(`http://localhost:5000/class/deny/${cls._id}`, {
+        fetch(`https://kitchen-champ-server.vercel.app/class/deny/${cls._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
