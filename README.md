@@ -5,9 +5,9 @@
 
 
 ### Notable Packages Used:
-> React keen-slider(Popular Instructor Section)
-> Multi Carousel: react-multi-carousel (Popular Class section)
-> Axios
+> React keen-slider(Popular Instructor Section),
+> Multi Carousel: react-multi-carousel (Popular Class section),
+> Axios,
 > Tanstack Query
 ### Key Features:
 * It is a full stack project with 3 types of users functionality: Admin, Instructor and Students. Upon Loging into the site everybody is a student. Only an admin can change the role to Instructor or Admin.
