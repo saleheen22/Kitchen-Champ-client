@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 
 
-const CheckoutForm = ({ cart, price }) => {
+const CheckoutForm = ({ price, id }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -82,17 +82,10 @@ const CheckoutForm = ({ cart, price }) => {
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
-                quantity: cart.length,
-                className: cart.map(item => item.className),
-                classId: cart.map(item => item.classId),
-                cartItems: cart.map(item => item._id)
+                classId: id
 
         }
-            //     ,
-            //     menuItems: cart.map(item => item.menuItemId),
-            //     status: 'service pending',
-            //     itemNames: cart.map(item => item.name)
-            // }
+    
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
@@ -130,8 +123,8 @@ const CheckoutForm = ({ cart, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
-                    Pay
+                <button className="btn btn-success btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
+                Pay
                 </button>
             </form>
             {cardError && <p className="text-red-600 ml-8">{cardError}</p>}

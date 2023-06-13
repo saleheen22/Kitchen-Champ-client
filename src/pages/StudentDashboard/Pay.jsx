@@ -1,18 +1,20 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
-import useCart from '../../hooks/useCart';
+import { useLocation } from 'react-router-dom';
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Pay = () => {
-    const [cart] = useCart();
-    const total = cart.reduce((sum, item) => sum+ item.price, 0);
-    const price = parseFloat(total.toFixed(2))
-    console.log('this is cart', cart)
+    const location = useLocation();
+    const {price, _id} = location.state;
+    console.log(price, _id);
+   
+
+
     return (
         <div className='ms-52'>
             <h2>This is pay</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price} cart={cart}></CheckoutForm>
+                <CheckoutForm price={price} id={_id}></CheckoutForm>
             </Elements>
         </div>
     );

@@ -108,7 +108,7 @@ const EnrolledClass = () => {
                                     <td className="text-end">{cls.price}</td>
                                     <td>
                                         <div>
-                                        <Link to="/dashboard/student/pay">
+                                        <Link to="/dashboard/student/pay" state ={cls}>
                                         
                                         <button className="btn  btn-outline btn-success w-28 "  
                                             
