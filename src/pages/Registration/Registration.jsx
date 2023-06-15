@@ -65,7 +65,7 @@ const Registration = () => {
             <>
             <div>
                 <div>
-                    <h2 className='text-center text-3xl'>Register Champ!! </h2>
+                    <h2 className='text-center text-3xl'>Become a Kitchen Champ!! </h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate__animated animate__fadeInBottomRight">
                             {/* name */}
